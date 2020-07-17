@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container text-center">
+      <h1 class="display-4">Pro打!</h1>
+      <p class="lead">Pro打はプログラミング用語に関するタイピング練習ゲームです<br>
+        iPnone, Android, Unity, Web開発に関連する用語のタイピングを通して<br>
+        タイピングとプログラミング両方に強くなりましょう！
+      </p>
+      <hr class="my-4">
+
+    </div>
+    <div class="container text-center">
+      <h2 id="subject">Hogehoge</h2>
+
+      <form class="form-row form-inline justify-content-center" name="typing" onsubmit="return false;">
+        <div class="form-group mb-2">
+          <input type="text" class="form-control" id="term" name="input" placeholder="type the term!">
+        </div>
+        <button  name="btn" type="btn submit" class="btn btn-primary mb-2 ml-2">enter</button>
+      </form>
+      <p id="timer"></p>
+    </div>
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+      <span></span>
+      <span class="navbar-text">当サイト制作者について
+        <a href="#" role="button">Wataru.Inoue</a>
+      </span>
+    </nav>
+    <pre class="lang:js decode:true">
+			<script src="sketch.js"></script>
+		</pre>
+  </body>
+</html>
