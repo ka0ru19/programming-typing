@@ -31,21 +31,21 @@ const textList = [
   'struct',
   'return'
 ];
-let TIME = 30;
-let count = 0;
+ 
+let TIME = 5;
 let state = true;
+let correctList = [];
  
 const countdown = setInterval(function() {
   timer.textContent = '制限時間：' + --TIME + '秒';
   if(TIME <= 0) finish();
 }, 1000);
  
- 
 form.btn.addEventListener('click', function(e) {
   if(!state) return;
  
   if(form.input.value === subject.textContent) {
-    count++;
+    correctList.push(subject.textContent);
     init();
   } else {
     subject.textContent = '間違いです！';
@@ -65,6 +65,10 @@ function init() {
  
 function finish() {
   clearInterval(countdown);
-  subject.textContent = '正解数は' + count + '個でした！';
+  var sum = 0;
+  for (const collectTerm of correctList) {
+    sum += collectTerm.length;
+  }
+  subject.textContent = '正解数：' + sum + '文字、' + correctList.length + '語！';
   state = false;
 }
