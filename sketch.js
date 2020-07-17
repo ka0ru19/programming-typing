@@ -31,7 +31,6 @@ const textList = [
   'struct',
   'return'
 ];
- 
 let TIME = 30;
 let count = 0;
 let state = true;
