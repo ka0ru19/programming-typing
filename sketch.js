@@ -1,6 +1,7 @@
-const subject = document.getElementById('subject');
 const term = document.getElementById('term');
+const description = document.getElementById('description');
 const timer = document.getElementById('timer');
+const typing = document.getElementById('typing');
 const form = document.forms.typing;
 const textList = [
   ['swift', 'iPhone開発言語'],
@@ -26,7 +27,7 @@ const textList = [
   ['struct', '構造体'],
   ['return', '戻り']
 ];
-let TIME_LIMIT = 8;
+let TIME_LIMIT = 20;
 let correctList = [];
 let countdown;
 let gameStatus;
@@ -37,23 +38,23 @@ const FINISHED = 'finished'
 
 form.btn.addEventListener('click', function(e) {
   if(gameStatus!==TYPING) return;
- 
+
   if(form.input.value === term.textContent) {
     correctList.push(term.textContent);
     setGame();
   } else {
-    subject.textContent = '間違いです！';
+    description.textContent = '間違いです！';
     setTimeout(function(){ setGame() }, 1000)
   }
 });
- 
+
 document.body.onkeyup = function(e){
   if(gameStatus===WAITING && e.keyCode == 32){
     // ゲーム開始待機中にスペースキー押下
     setupGame();
     setGame();
   }
-  
+
   if(gameStatus===FINISHED && e.keyCode == 27){
     // ゲーム終了後にESCキー押下
     init();
@@ -61,18 +62,21 @@ document.body.onkeyup = function(e){
 }
 
 init();
- 
+
 function init() {
   gameStatus = WAITING;
   correctList = [];
-  subject.textContent = 'space押下でgame start!';
+  term.textContent = 'ココに表示される用語をtype!';
+  description.textContent = 'space押下でgame start!';
+  // typingの非活性化
+  typing.style.display ="none";
 }
 
 function setGame() {
   const randomIndex = Math.floor(Math.random() * textList.length);
 
-  subject.textContent = textList[randomIndex][1];
   term.textContent = textList[randomIndex][0];
+  description.textContent = textList[randomIndex][1];
   form.input.value = '';
   form.input.focus();
 }
@@ -80,13 +84,15 @@ function setGame() {
 function setupGame() {
   gameStatus = TYPING;
   time = TIME_LIMIT;
+  // typingの活性化
+  typing.style.display ="block";
   countdown = setInterval(function() {
     timer.textContent = '制限時間：' + --time + '秒';
     if(time <= 0) finish();
   }, 1000);
   timer.textContent = '制限時間：' + TIME_LIMIT + '秒';
 }
- 
+
 function finish() {
   gameStatus = FINISHED;
   clearInterval(countdown);
@@ -94,6 +100,8 @@ function finish() {
   for (const collectTerm of correctList) {
     sum += collectTerm.length;
   }
-  subject.textContent = '正解数：' + sum + '文字、' + correctList.length + '用語！';
-  term.textContent = '';
+  term.textContent = '正解数：' + sum + '文字、' + correctList.length + '用語！';
+  description.textContent = 'Escキーでスタートに戻る';
+  // typingの非活性化
+  typing.style.display ="none";
 }

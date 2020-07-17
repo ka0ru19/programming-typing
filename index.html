@@ -8,26 +8,28 @@
   <body>
     <div class="bg-dark vh-100">
       <div class="container text-center text-light">
-        <h1 class="display-4 font-weight-bold">Pro打!</h1>
-        <p class="lead">Pro打!はプログラミング用語に関するタイピング練習ゲームです<br>
+        <h1 class="display-4 font-weight-bold pt-4">Pro打!</h1>
+        <p class="lead mt-2">Pro打!はプログラミング用語に関するタイピング練習ゲームです<br>
           iPhone, Android, Unity, Web開発に関連する用語のタイピングを通して<br>
           タイピングとプログラミング両方に強くなりましょう！
         </p>
         <hr class="my-4">
       </div>
-      
+
       <div class="container text-center">
-        <h2 id="subject" class="text-warning"></h2>
-        <h4 id="term" class="text-warning"></h4>
-        <form class="form-row form-inline justify-content-center" name="typing" onsubmit="return false;">
-          <div class="form-group mb-2">
-            <input type="text" class="form-control" id="term" name="input" placeholder="type the term!" autocomplete="off">
-          </div>
-          <button  name="btn" type="btn submit" class="btn btn-primary mb-2 ml-2">enter</button>
-        </form>
-        <p id="timer" class="text-info"></p>
+        <h2 id="term" class="text-warning"></h2>
+        <h4 id="description" class="text-white-50"></h4>
+        <div id="typing">
+          <form class="form-row form-inline justify-content-center" name="typing" onsubmit="return false;">
+            <div class="form-group mb-2">
+              <input type="text" class="form-control" id="term" name="input" placeholder="type the term!" autocomplete="off">
+            </div>
+            <button  name="btn" type="btn submit" class="btn btn-primary mb-2 ml-2">enter</button>
+          </form>
+          <p id="timer" class="text-info"></p>
+        </div>
       </div>
-      
+
       <nav class="navbar fixed-bottom navbar-dark bg-dark">
         <span></span>
         <span class="navbar-text">当サイト制作者について
