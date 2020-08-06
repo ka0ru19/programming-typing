@@ -7,7 +7,7 @@ const textList = [
   ['swift', 'iPhone開発言語'],
   ['kotlin', 'Android開発言語'],
   ['unity', 'game開発ソフト'],
-  ['c#', 'game開発言語'],
+  ['c#', 'unity game開発言語'],
   ['html', 'web-pageマークアップ言語'],
   ['css', 'web-pageスタイルシート'],
   ['JavaScript', 'webpage操作言語'],
@@ -41,25 +41,27 @@ form.btn.addEventListener('click', function(e) {
 
   if(form.input.value === term.textContent) {
     correctList.push(term.textContent);
-    setGame();
+    description.textContent = '◎ 正解!';
   } else {
-    description.textContent = '間違いです！';
-    setTimeout(function(){ setGame() }, 1000)
+    description.textContent = '× 間違いです！';
   }
+  setTermBlurStyle(0);
+  setTimeout(function(){ setGame() }, 1000);
 });
 
 document.body.onkeyup = function(e){
   if(gameStatus===WAITING && e.keyCode == 32){
     // ゲーム開始待機中にスペースキー押下
     setupGame();
-    setGame();
-  }
+    setGame(); 
+    }
 
   if(gameStatus===FINISHED && e.keyCode == 27){
     // ゲーム終了後にESCキー押下
     init();
   }
 }
+let blursize;
 
 init();
 
@@ -67,13 +69,26 @@ function init() {
   gameStatus = WAITING;
   correctList = [];
   term.textContent = 'ココに表示される用語をtype!';
-  description.textContent = 'space押下でgame start!';
+  description.textContent = 'space押下でgame start! ※ぼかしはクリックで消えます';
   // typingの非活性化
   typing.style.display ="none";
+  blursize = 8;
+  setTermBlurStyle(blursize--);
+}
+
+term.onclick = function() {
+  // ここに#buttonをクリックしたら発生させる処理を記述する
+   setTermBlurStyle(blursize--);
+};
+
+function setTermBlurStyle(size) {
+  term.style.filter = "blur(" + String(size) + "px)";
 }
 
 function setGame() {
   const randomIndex = Math.floor(Math.random() * textList.length);
+  blursize = 8;
+  setTermBlurStyle(blursize--);
 
   term.textContent = textList[randomIndex][0];
   description.textContent = textList[randomIndex][1];
@@ -96,6 +111,7 @@ function setupGame() {
 function finish() {
   gameStatus = FINISHED;
   clearInterval(countdown);
+  setTermBlurStyle(0);
   var sum = 0;
   for (const collectTerm of correctList) {
     sum += collectTerm.length;

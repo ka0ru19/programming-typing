@@ -1,6 +1,5 @@
 <html>
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -17,14 +16,14 @@
       </div>
 
       <div class="container text-center">
-        <h2 id="term" class="text-warning"></h2>
+        <h2 id="term" class="text-warning" style="user-select:none"></h2>
         <h4 id="description" class="text-white-50"></h4>
         <div id="typing">
           <form class="form-row form-inline justify-content-center" name="typing" onsubmit="return false;">
             <div class="form-group mb-2">
               <input type="text" class="form-control" id="term" name="input" placeholder="type the term!" autocomplete="off">
             </div>
-            <button  name="btn" type="btn submit" class="btn btn-primary mb-2 ml-2">enter</button>
+            <button name="btn" type="btn submit" class="btn btn-primary mb-2 ml-2">enter</button>
           </form>
           <p id="timer" class="text-info"></p>
         </div>
@@ -38,7 +37,9 @@
       </nav>
     </div>
     <pre class="lang:js decode:true">
-			<script src="sketch.js"></script>
-		</pre>
+ 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="spoiler.js"></script>
+		<script src="sketch.js"></script>
+	</pre>
   </body>
 </html>
